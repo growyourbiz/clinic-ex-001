@@ -6,12 +6,13 @@
   <title>โปรโมชั่น</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100">
 
   <div id="app" class="max-w-md mx-auto bg-white min-h-screen pb-6 space-y-3 px-2"></div>
 
   <script>
-    // 🔥 ระบุชื่อรูปที่ต้องการ (แก้แค่ตรงนี้)
+    // 🔥 ใส่รูปตามลำดับ
     const IMAGES = [
       "images/001.webp",
       "images/002.webp",
@@ -24,37 +25,37 @@
 
     const app = document.getElementById("app");
 
-    function loadImages() {
+    async function loadImages() {
       let hasImage = false;
 
-      IMAGES.forEach(src => {
-        const img = new Image();
+      for (const src of IMAGES) {
+        await new Promise((resolve) => {
+          const img = new Image();
 
-        img.onload = function () {
-          hasImage = true;
+          img.onload = function () {
+            hasImage = true;
 
-          const el = document.createElement("img");
-          el.src = src;
-          el.className = "w-full h-auto object-cover rounded-lg shadow-md";
-          el.alt = "โปรโมชั่น";
+            const el = document.createElement("img");
+            el.src = src;
+            el.className = "w-full h-auto object-cover rounded-lg shadow-md";
+            el.alt = "โปรโมชั่น";
 
-          app.appendChild(el);
-        };
+            app.appendChild(el);
+            resolve();
+          };
 
-        img.onerror = function () {
-          // ❌ ไม่ทำอะไร (ไม่แสดง)
-        };
+          img.onerror = function () {
+            resolve(); // ข้ามรูปที่ไม่มี
+          };
 
-        img.src = src;
-      });
+          img.src = src;
+        });
+      }
 
-      // ⏳ เช็คหลังโหลดเสร็จ
-      setTimeout(() => {
-        if (!hasImage) {
-          // ถ้าไม่มีรูปเลย → ซ่อนทั้งหน้า
-          app.style.display = "none";
-        }
-      }, 500);
+      // ❗ ถ้าไม่มีรูปเลย → ไม่แสดงอะไร
+      if (!hasImage) {
+        app.style.display = "none";
+      }
     }
 
     loadImages();
@@ -62,35 +63,3 @@
 
 </body>
 </html>
-
-<!--
-🔥 สิ่งที่เปลี่ยน
-
-- ไม่เขียน <img> ตรง ๆ แล้ว
-- ใช้ JS โหลดรูปแทน
-- ถ้าไม่มีรูปเลย → หน้าเว็บจะว่าง (ไม่แสดงอะไร)
-
-============================
-วิธีใช้
-============================
-
-แก้แค่ตรงนี้:
-
-const IMAGES = [
-  "images/001.webp",
-  "images/002.webp"
-];
-
-- ใส่กี่รูปก็ได้
-- ถ้าไฟล์ไม่มี → จะไม่แสดง
-
-============================
-ข้อดี
-============================
-
-- ไม่ต้องกลัวรูปหายแล้วพัง
-- ไม่ต้องลบ <img> เอง
-- ใช้เป็น template ยิงลูกค้าได้เลย
-
-============================
--->
