@@ -3,105 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ราคาค่าบริการ</title>
+  <title>โปรโมชั่น</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
 
-  <div id="app" class="max-w-md mx-auto bg-white min-h-screen pb-6 space-y-3 px-2">
+  <div id="app" class="max-w-md mx-auto bg-white min-h-screen pb-6 space-y-3 px-2"></div>
 
-    <!-- IMAGE -->
-    <img
-      src="images/001.webp"
-      class="w-full h-auto object-cover rounded-lg shadow-md"
-      alt="โปรโมชั่น"
-    />
-    <img
-      src="images/002.webp"
-      class="w-full h-auto object-cover rounded-lg shadow-md"
-      alt="โปรโมชั่น"
-    />
-    <img
-      src="images/003.webp"
-      class="w-full h-auto object-cover rounded-lg shadow-md"
-      alt="โปรโมชั่น"
-    />
-    <img
-      src="images/004.webp"
-      class="w-full h-auto object-cover rounded-lg shadow-md"
-      alt="โปรโมชั่น"
-    />
-    <img
-      src="images/005.webp"
-      class="w-full h-auto object-cover rounded-lg shadow-md"
-      alt="โปรโมชั่น"
-    />
-    <img
-      src="images/006.webp"
-      class="w-full h-auto object-cover rounded-lg shadow-md"
-      alt="โปรโมชั่น"
-    />
-    <img
-      src="images/007.webp"
-      class="w-full h-auto object-cover rounded-lg shadow-md"
-      alt="โปรโมชั่น"
-    />
-  
-
-    <!-- YOUTUBE LIST (auto generate) -->
-    <div id="videoList" class="space-y-3"></div>
-
-  </div>
-<!-- 
   <script>
-    // 🔥 ใส่หลายลิงก์ได้เลย
-    const YT_URLS = [
-      "https://youtu.be/Yqj8d7_skPA",
-      "https://www.youtube.com/watch?v=CCjXeSERcns",
-      "https://www.youtube.com/watch?v=PQpzECsxHK8"
+    // 🔥 ระบุชื่อรูปที่ต้องการ (แก้แค่ตรงนี้)
+    const IMAGES = [
+      "images/001.webp",
+      "images/002.webp",
+      "images/003.webp",
+      "images/004.webp",
+      "images/005.webp",
+      "images/006.webp",
+      "images/007.webp"
     ];
 
-    function extractVideoId(url) {
-      try {
-        const u = new URL(url);
+    const app = document.getElementById("app");
 
-        if (u.hostname.includes("youtube.com")) {
-          return u.searchParams.get("v");
+    function loadImages() {
+      let hasImage = false;
+
+      IMAGES.forEach(src => {
+        const img = new Image();
+
+        img.onload = function () {
+          hasImage = true;
+
+          const el = document.createElement("img");
+          el.src = src;
+          el.className = "w-full h-auto object-cover rounded-lg shadow-md";
+          el.alt = "โปรโมชั่น";
+
+          app.appendChild(el);
+        };
+
+        img.onerror = function () {
+          // ❌ ไม่ทำอะไร (ไม่แสดง)
+        };
+
+        img.src = src;
+      });
+
+      // ⏳ เช็คหลังโหลดเสร็จ
+      setTimeout(() => {
+        if (!hasImage) {
+          // ถ้าไม่มีรูปเลย → ซ่อนทั้งหน้า
+          app.style.display = "none";
         }
-
-        if (u.hostname.includes("youtu.be")) {
-          return u.pathname.replace("/", "");
-        }
-
-        return null;
-      } catch (e) {
-        return null;
-      }
+      }, 500);
     }
 
-    const container = document.getElementById("videoList");
-
-    YT_URLS.forEach(url => {
-      const videoId = extractVideoId(url);
-
-      if (videoId && videoId.length === 11) {
-        const wrapper = document.createElement("div");
-        wrapper.className = "relative w-full rounded-lg overflow-hidden shadow-md";
-        wrapper.style.paddingTop = "56.25%";
-
-        const iframe = document.createElement("iframe");
-        iframe.className = "absolute top-0 left-0 w-full h-full";
-        iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
-        iframe.frameBorder = "0";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        iframe.allowFullscreen = true;
-
-        wrapper.appendChild(iframe);
-        container.appendChild(wrapper);
-      }
-    });
+    loadImages();
   </script>
--->
 
 </body>
 </html>
+
+<!--
+🔥 สิ่งที่เปลี่ยน
+
+- ไม่เขียน <img> ตรง ๆ แล้ว
+- ใช้ JS โหลดรูปแทน
+- ถ้าไม่มีรูปเลย → หน้าเว็บจะว่าง (ไม่แสดงอะไร)
+
+============================
+วิธีใช้
+============================
+
+แก้แค่ตรงนี้:
+
+const IMAGES = [
+  "images/001.webp",
+  "images/002.webp"
+];
+
+- ใส่กี่รูปก็ได้
+- ถ้าไฟล์ไม่มี → จะไม่แสดง
+
+============================
+ข้อดี
+============================
+
+- ไม่ต้องกลัวรูปหายแล้วพัง
+- ไม่ต้องลบ <img> เอง
+- ใช้เป็น template ยิงลูกค้าได้เลย
+
+============================
+-->
