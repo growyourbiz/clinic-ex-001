@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้า Landing Page ของฉัน</title>
+    
+    <style>
+        /* --- ส่วนตกแต่งความสวยงาม (CSS) --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin: 30px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* --- ตั้งค่าปุ่ม LINE บนจอคอม (Desktop) --- */
+        .line-button-wrapper {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .line-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #00B900;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 185, 0, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        
+        .line-button:hover {
+            background-color: #009900;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* =======================================================
+           ตั้งค่าสำหรับมือถือและแท็บเล็ต (กว้างไม่เกิน 768px)
+           ======================================================= */
+        @media (max-width: 768px) {
+            body {
+                /* เพิ่มพื้นที่ว่างด้านล่างสุด เพื่อไม่ให้เนื้อหาโดนปุ่มที่ Fix ไว้บัง */
+                padding-bottom: 90px; 
+            }
+
+            .line-button-wrapper {
+                /* ทำให้กล่องปุ่มติดขอบล่าง */
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                margin: 0;
+                padding: 15px 0;
+                background-color: #ffffff; /* ใส่พื้นหลังสีขาวกันเนื้อหาทะลุ */
+                box-shadow: 0 -4px 10px rgba(0,0,0,0.1); /* ใส่เงาด้านบน */
+                z-index: 1000; /* ดันให้อยู่เลเยอร์บนสุดเสมอ */
+            }
+
+            .line-button {
+                /* ปรับขนาดปุ่มให้พอดีกับจอมือถือ */
+                width: 80%;
+                max-width: 350px;
+                padding: 12px 20px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>รีวิวลูกค้า</h1>
+        <!--
+        <p>นี่คือตัวอย่างหน้า Landing Page ที่ออกแบบมาเพื่อรองรับทุกอุปกรณ์ คุณสามารถเปลี่ยนข้อความตรงนี้เป็นรายละเอียดสินค้าของคุณได้เลย พิมพ์บรรยายสรรพคุณ หรือจุดเด่นที่ทำให้ลูกค้าต้องตัดสินใจซื้อ</p>
+        -->
+        <img src="images/review-001.webp" alt="รีวิว" class="product-image">
+        <img src="images/review-002.webp" alt="รีวิว" class="product-image">
+        <img src="images/review-003.webp" alt="รีวิว" class="product-image">
+        <img src="images/review-004.webp" alt="รีวิว" class="product-image">
+        <img src="images/review-005.webp" alt="รีวิว" class="product-image">
+        <img src="images/review-006.webp" alt="รีวิว" class="product-image">
+        <img src="images/review-007.webp" alt="รีวิว" class="product-image">
+        <img src="images/review-008.webp" alt="รีวิว" class="product-image">
+       
+        <!--
+        <h2>ดูรีวิวการใช้งานจริง</h2>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        </div>
+        -->
+        <h2>สนใจสั่งซื้อ หรือสอบถามข้อมูลเพิ่มเติม</h2>
+
+        <p style="text-align: center;">คลิกที่ปุ่มด้านล่างเพื่อแอดไลน์คุยกับแอดมินได้เลยครับ ตอบไว ใจดี บริการ 24 ชั่วโมง!</p>
+
+        <div class="line-button-wrapper">
+            <a href="https://line.me/R/oaMessage/%40278ocitc" target="_blank" class="line-button">
+                💬 เพิ่มเพื่อนทาง LINE
+            </a>
+        </div>
+        <div class="footer">
+            &copy; 2024 ชื่อร้านของคุณ. สงวนลิขสิทธิ์
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+<!--สิ่งที่เปลี่ยนไปและวิธีใช้งาน:
+การแสดงผลบน มือถือ/แท็บเล็ต: ผมใช้ @media (max-width: 768px) สั่งให้ปุ่มถูกตรึงไว้ที่ขอบล่างของหน้าจอเสมอ (position: fixed;) พร้อมใส่พื้นหลังสีขาวและเงาบางๆ ให้ปุ่มดูเด้งออกมาและไม่กลืนไปกับเนื้อหาตอนเลื่อนหน้าจอ
+
+ป้องกันปุ่มบังข้อความ: ผมเพิ่ม padding-bottom: 90px; ให้กับ body ในมือถือ เพื่อให้ตอนที่เราเลื่อนลงมาล่างสุดของเว็บ ข้อความฟุตเตอร์ (Footer) จะไม่โดนปุ่ม LINE บังครับ
+
+วิธีเปิด-ปิดปุ่ม (มีหรือไม่มีก็ได้): * หากคุณ ต้องการมีปุ่ม: ปล่อยโค้ดส่วน <div class="line-button-wrapper">...</div> ไว้ตามปกติ
+
+หากคุณ ไม่ต้องการมีปุ่ม: เพียงแค่ไฮไลต์ลบโค้ดบล็อก <div class="line-button-wrapper">...</div> ออกจากไฟล์ HTML ปุ่มก็จะหายไปอย่างสมบูรณ์โดยที่เว็บส่วนอื่นไม่พังครับ-->
